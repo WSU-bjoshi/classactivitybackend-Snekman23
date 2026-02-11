@@ -1,3 +1,14 @@
+import pool from "../db/connection.js";
+
+
+export async function getAllTodos(){
+  const [rows] = await pool.query("SELECT * FROM todos")
+  return rows;
+
+}
+
+
+
 let nextID = 3;
 
 const todos = [
@@ -5,9 +16,9 @@ const todos = [
   { id: 2, task: "Try to have test", done: false },
 ];
 
-function getAllTodos() {
-  return todos;
-}
+// function getAllTodos() {
+//   return todos;
+// }
 
 function createTodo(task) {
   //   if (!task || typeof task !== "string" || task.trim() === "") {

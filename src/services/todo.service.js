@@ -1,7 +1,7 @@
 import todoModels from "../models/todo.models.js";
 
-function getTodos() {
-  return todoModels.getAllTodos();
+export async function getTodos() {
+  return await todoModels.getAllTodos();
 }
 
 function createTodoService(task) {
@@ -42,7 +42,6 @@ function getTodoByIdService(id) {
 
 
 export {
-  getTodos,
   createTodoService,
   toggleTodoByIdService,
   deleteTodoByIdService,
