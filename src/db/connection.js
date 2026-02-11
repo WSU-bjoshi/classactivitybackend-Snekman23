@@ -6,3 +6,5 @@ const pool = mysql.createPool({
     password:"admin",
     database:"todo_db"
 })
+
+export default pool;
