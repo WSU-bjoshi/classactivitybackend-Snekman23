@@ -6,26 +6,26 @@ import {
   getTodoByIdService
 } from "../services/todo.service.js";
 
-export function listTodos(req, res) {
+export async function listTodos(req, res) {
   const todos = getTodos();
   res.json({ count: todos.length, todos });
 }
 
-export function createTodos(req, res) {
+export async function createTodos(req, res) {
   const { task } = req.body;
 
   try {
     const { task } = req.body;
-    const todo = createTodoService(task);
+    const todo = await createTodoService(task);
     res.status(201).json({ message: "Created", todo });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 }
 
-export function toggleTodo(req, res) {
+export async function toggleTodo(req, res) {
   const id = Number(req.params.id);
-  const todo = toggleTodoByIdService(id);
+  const todo = await toggleTodoByIdService(id);
 
   if (!todo){
     return res.status(400).json({ error: "todo not found"});
@@ -54,4 +54,3 @@ export function removeTodo(req, res) {
   res.json({ message: "Deleted Succesfully" });
 }
 
-//Test
